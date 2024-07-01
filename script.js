@@ -87,4 +87,30 @@ noButton.addEventListener("mouseover", function () {
     const y = Math.random() * 200 - 10;
     noButton.style.transform = `translate(${x}px, ${y}px)`;
   }
+  function updateNoButtonText() {
+    noButton.innerHTML = generateMessage(noCount);
+    if (noCount === MAX_IMAGES) {
+      // Agrega un listener de eventos de touchstart al botón "No"
+      noButton.addEventListener('touchstart', function(event) {
+        // Llama a la función moveButton() cuando el usuario toca la pantalla
+        moveButton();
+        // Evita que el navegador realice la acción predeterminada
+        event.preventDefault();
+      });
+      // Agrega un listener de eventos de click al botón "No"
+      noButton.addEventListener('click', function(event) {
+        // Llama a la función moveButton() cuando el usuario hace clic en el botón
+        moveButton();
+        // Evita que el navegador realice la acción predeterminada
+        event.preventDefault();
+      });
+    }
+  }
+  
+  // Función que mueve el botón "No" a una posición aleatoria
+  function moveButton() {
+    const x = Math.random() * 200 - 10;
+    const y = Math.random() * 200 - 10;
+    noButton.style.transform = `translate(${x}px, ${y}px)`;
+  }
 });
